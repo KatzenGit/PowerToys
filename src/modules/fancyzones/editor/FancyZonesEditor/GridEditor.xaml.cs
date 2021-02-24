@@ -183,7 +183,7 @@ namespace FancyZonesEditor
 
         private void OnSplit(object o, SplitEventArgs e)
         {
-            MergeCancelClick(null, null);
+            ActionCancelClick(null, null);
 
             UIElementCollection previewChildren = Preview.Children;
             GridZone splitee = (GridZone)o;
@@ -394,7 +394,7 @@ namespace FancyZonesEditor
 
         private void Resizer_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
-            MergeCancelClick(null, null);
+            ActionCancelClick(null, null);
 
             GridResizer resizer = (GridResizer)sender;
 
@@ -463,9 +463,9 @@ namespace FancyZonesEditor
                     if (Model.CellChildMap[row, col] != mergedIndex)
                     {
                         // selection is more than one cell, merge is valid
-                        MergePanel.Visibility = Visibility.Visible;
-                        Canvas.SetTop(MergeButtons, mousePoint.Y);
-                        Canvas.SetLeft(MergeButtons, mousePoint.X);
+                        ActionPanel.Visibility = Visibility.Visible;
+                        Canvas.SetTop(ActionButtons, mousePoint.Y);
+                        Canvas.SetLeft(ActionButtons, mousePoint.X);
                         return;
                     }
                 }
@@ -587,7 +587,7 @@ namespace FancyZonesEditor
 
         private void MergeClick(object sender, RoutedEventArgs e)
         {
-            MergePanel.Visibility = Visibility.Collapsed;
+            ActionPanel.Visibility = Visibility.Collapsed;
 
             Action<int> deleteAction = (index) =>
             {
@@ -601,15 +601,15 @@ namespace FancyZonesEditor
             ClearSelection();
         }
 
-        private void MergeCancelClick(object sender, RoutedEventArgs e)
+        private void ActionCancelClick(object sender, RoutedEventArgs e)
         {
-            MergePanel.Visibility = Visibility.Collapsed;
+            ActionPanel.Visibility = Visibility.Collapsed;
             ClearSelection();
         }
 
-        private void MergePanelMouseUp(object sender, MouseButtonEventArgs e)
+        private void ActionPanelMouseUp(object sender, MouseButtonEventArgs e)
         {
-            MergeCancelClick(null, null);
+            ActionCancelClick(null, null);
         }
 
         protected override Size ArrangeOverride(Size arrangeBounds)

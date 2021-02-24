@@ -13,13 +13,13 @@
         <Grid>
             <Canvas x:Name="Preview" />
             <Canvas x:Name="AdornerLayer" />
-            <Canvas x:Name="MergePanel"
-                    MouseUp="MergePanelMouseUp"
+            <Canvas x:Name="ActionPanel"
+                    MouseUp="ActionPanelMouseUp"
                     Visibility="Collapsed">
                 <Canvas.Effect>
                     <DropShadowEffect BlurRadius="6" Opacity="0.32"  ShadowDepth="2" />
                 </Canvas.Effect>
-                <StackPanel x:Name="MergeButtons"
+                <StackPanel x:Name="ActionButtons"
                             Orientation="Horizontal">
                     <Border CornerRadius="2"
                             Background="{DynamicResource PrimaryBackgroundBrush}">
