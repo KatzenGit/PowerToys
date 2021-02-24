@@ -601,6 +601,12 @@ namespace FancyZonesEditor
             ClearSelection();
         }
 
+        private void BalanceClick(object sender, RoutedEventArgs e)
+        {
+            ActionPanel.Visibility = Visibility.Collapsed;
+            ClearSelection();
+        }
+
         private void ActionCancelClick(object sender, RoutedEventArgs e)
         {
             ActionPanel.Visibility = Visibility.Collapsed;
