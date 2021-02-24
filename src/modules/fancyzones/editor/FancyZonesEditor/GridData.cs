@@ -882,6 +882,34 @@ namespace FancyZonesEditor
             FixAccuracyError(_colInfo, _model.ColumnPercents);
         }
 
+        public void BalanceZones(int startRow, int endRow, int startCol, int endCol)
+        {
+            int selectionWidth = endCol - startCol + 1;
+            int selectionHeight = endRow - startRow + 1;
+
+            int totalWidth = 0;
+            for (int i = startCol; i <= endCol; i++)
+            {
+                totalWidth += _model.ColumnPercents[i];
+            }
+
+            int totalHeight = 0;
+            for (int i = startRow; i <= endRow; i++)
+            {
+                totalHeight += _model.RowPercents[i];
+            }
+
+            for (int i = startCol; i <= endCol; i++)
+            {
+                _model.ColumnPercents[i] = totalWidth / selectionWidth;
+            }
+
+            for (int i = startRow; i <= endRow; i++)
+            {
+                _model.RowPercents[i] = totalHeight / selectionHeight;
+            }
+        }
+
         public void ReplaceIndicesToMaintainOrder(int zoneCount)
         {
             int[,] cells = _model.CellChildMap;

@@ -604,6 +604,9 @@ namespace FancyZonesEditor
         private void BalanceClick(object sender, RoutedEventArgs e)
         {
             ActionPanel.Visibility = Visibility.Collapsed;
+
+            _data.BalanceZones(_startRow, _endRow, _startCol, _endCol);
+
             ClearSelection();
         }
 
