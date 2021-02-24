@@ -15,8 +15,6 @@ namespace FancyZonesEditor
     /// </summary>
     public partial class GridResizer : Thumb
     {
-        private static readonly RotateTransform _rotateTransform = new RotateTransform(90, 24, 24);
-
         public int StartRow { get; set; }
 
         public int EndRow { get; set; }
@@ -48,12 +46,16 @@ namespace FancyZonesEditor
                 Border body = (Border)Template.FindName("Body", this);
                 if (value == Orientation.Vertical)
                 {
-                    body.RenderTransform = null;
+                    body.RenderTransform = new TranslateTransform(0, -24);
                     body.Cursor = Cursors.SizeWE;
                 }
                 else
                 {
-                    body.RenderTransform = _rotateTransform;
+                    TransformGroup group = new TransformGroup();
+                    group.Children.Add(new RotateTransform(90, 24, 24));
+                    group.Children.Add(new TranslateTransform(-24, 0));
+
+                    body.RenderTransform = group;
                     body.Cursor = Cursors.SizeNS;
                 }
             }
