@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using FancyZonesEditor.Models;
@@ -887,17 +888,8 @@ namespace FancyZonesEditor
             int selectionWidth = endCol - startCol + 1;
             int selectionHeight = endRow - startRow + 1;
 
-            int totalWidth = 0;
-            for (int i = startCol; i <= endCol; i++)
-            {
-                totalWidth += _model.ColumnPercents[i];
-            }
-
-            int totalHeight = 0;
-            for (int i = startRow; i <= endRow; i++)
-            {
-                totalHeight += _model.RowPercents[i];
-            }
+            int totalWidth = _model.ColumnPercents.Skip(startCol).Take(selectionWidth).Sum();
+            int totalHeight = _model.RowPercents.Skip(startRow).Take(selectionHeight).Sum();
 
             for (int i = startCol; i <= endCol; i++)
             {
