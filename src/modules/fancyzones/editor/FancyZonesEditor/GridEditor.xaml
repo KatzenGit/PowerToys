@@ -9,6 +9,9 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
+    </UserControl.Resources>
     <Viewbox Stretch="Uniform">
         <Grid>
             <Canvas x:Name="Preview" />
@@ -19,26 +22,9 @@
                 <Canvas.Effect>
                     <DropShadowEffect BlurRadius="6" Opacity="0.32"  ShadowDepth="2" />
                 </Canvas.Effect>
-                <StackPanel x:Name="ActionButtons"
-                            Orientation="Horizontal">
-                    <Border CornerRadius="2"
-                            Background="{DynamicResource PrimaryBackgroundBrush}">
-                        
-                        <Button Width="134"
-                                Height="36"
-                                Margin="0"
-                                Style="{StaticResource DefaultButtonStyle}"
-                                Click="MergeClick">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xE746;"
-                                           FontFamily="Segoe MDL2 Assets"
-                                           Foreground="{DynamicResource PrimaryForegroundBrush}"
-                                           Margin="0,3,8,0" />
-                                <TextBlock Text="{x:Static props:Resources.Merge_zones}"
-                                           Foreground="{DynamicResource PrimaryForegroundBrush}"/>
-                            </StackPanel>
-                        </Button>
-                    </Border>
+                <StackPanel x:Name="ActionButtons" Orientation="Vertical" Background="{DynamicResource PrimaryBackgroundBrush}">
+                    <Button HorizontalAlignment="Stretch" Style="{DynamicResource DefaultButtonStyle}" Click="MergeClick">merge zones</Button>
+                    <Button HorizontalAlignment="Stretch" Style="{DynamicResource DefaultButtonStyle}" Click="BalanceClick">balance zones</Button>
                 </StackPanel>
             </Canvas>
         </Grid>
